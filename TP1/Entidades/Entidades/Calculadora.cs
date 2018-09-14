@@ -6,7 +6,38 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Class1
+    public class Calculadora
     {
+
+        public static double Operar(Numero numeroUno, Numero numeroDos, string operador)
+        {
+            double resultado=0;
+            operador = ValidarOperador(operador);
+            switch(operador)
+            {
+                case "+":
+                    resultado = numeroUno + numeroDos;
+                    break;
+                case "-":
+                    resultado = numeroUno - numeroDos;
+                    break;
+                case "/":
+                    resultado = numeroUno / numeroDos;
+                    break;
+                case "*":
+                    resultado = numeroUno * numeroDos;
+                    break;
+            }
+            return resultado;
+        }
+
+        private static string ValidarOperador(string operador)
+        {
+            if(operador == "+" || operador == "-" || operador == "/" || operador == "*")
+            {
+                return operador;
+            }
+            return "+";
+        }
     }
 }
