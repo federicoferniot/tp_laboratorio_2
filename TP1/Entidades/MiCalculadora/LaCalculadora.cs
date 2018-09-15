@@ -59,11 +59,21 @@ namespace MiCalculadora
 			}
 		}
 
+		/// <summary>
+		/// Realiza la operación correspondiente entre los dos números
+		/// </summary>
+		/// <param name="numero1">Primer número para realizar la operación</param>
+		/// <param name="numero2">Segundo número para realizar la operación</param>
+		/// <param name="operador">Operador para realizar la operación</param>
+		/// <returns></returns>
 		private static double Operar(string numero1, string numero2, string operador)
 		{
 			return Entidades.Calculadora.Operar(numero1, numero2, operador);
 		}
 
+		/// <summary>
+		/// Limpia la calculadora de resultados y números ingresados
+		/// </summary>
 		private void Limpiar()
 		{
 			txtNumero1.Clear();

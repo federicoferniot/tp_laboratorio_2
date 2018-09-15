@@ -37,8 +37,8 @@
 			this.btnConvertirABinario = new System.Windows.Forms.Button();
 			this.btnConvertirADecimal = new System.Windows.Forms.Button();
 			this.lblResultado = new System.Windows.Forms.Label();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.panel1.SuspendLayout();
+			this.pnlResultado = new System.Windows.Forms.Panel();
+			this.pnlResultado.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// txtNumero1
@@ -130,20 +130,20 @@
 			this.lblResultado.TabIndex = 9;
 			this.lblResultado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// panel1
+			// pnlResultado
 			// 
-			this.panel1.Controls.Add(this.lblResultado);
-			this.panel1.Location = new System.Drawing.Point(49, 10);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(308, 20);
-			this.panel1.TabIndex = 10;
+			this.pnlResultado.Controls.Add(this.lblResultado);
+			this.pnlResultado.Location = new System.Drawing.Point(49, 10);
+			this.pnlResultado.Name = "pnlResultado";
+			this.pnlResultado.Size = new System.Drawing.Size(308, 20);
+			this.pnlResultado.TabIndex = 10;
 			// 
 			// LaCalculadora
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(407, 132);
-			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.pnlResultado);
 			this.Controls.Add(this.btnConvertirADecimal);
 			this.Controls.Add(this.btnConvertirABinario);
 			this.Controls.Add(this.btnOperar);
@@ -158,8 +158,8 @@
 			this.Name = "LaCalculadora";
 			this.Text = "Calculadora de Federico Ferniot del curso 2°D";
 			this.Load += new System.EventHandler(this.LaCalculadora_Load);
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
+			this.pnlResultado.ResumeLayout(false);
+			this.pnlResultado.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -176,7 +176,7 @@
         private System.Windows.Forms.Button btnConvertirABinario;
         private System.Windows.Forms.Button btnConvertirADecimal;
 		private System.Windows.Forms.Label lblResultado;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel pnlResultado;
 	}
 }
 
