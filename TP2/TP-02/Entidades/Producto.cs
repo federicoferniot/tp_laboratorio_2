@@ -15,20 +15,20 @@ namespace Entidades_2018
         {
             Serenisima, Campagnola, Arcor, Ilolay, Sancor, Pepsico
         }
-        EMarca marca;
-        string codigoDeBarras;
-        ConsoleColor colorPrimarioEmpaque;
+        private EMarca marca;
+        private string codigoDeBarras;
+        private ConsoleColor colorPrimarioEmpaque;
 
         /// <summary>
-        /// ReadOnly: Retornará la cantidad de ruedas del vehículo
+        /// ReadOnly: Retornará la cantidad de calorias del producto
         /// </summary>
         protected abstract short CantidadCalorias { get;}
 
-		protected Producto(string codigoDeBarras, EMarca marca, ConsoleColor colorPrimarioEmpaque)
+		public Producto(string patente, EMarca marca, ConsoleColor color)
 		{
-			this.codigoDeBarras = codigoDeBarras;
+			this.codigoDeBarras = patente;
 			this.marca = marca;
-			this.colorPrimarioEmpaque = colorPrimarioEmpaque;
+			this.colorPrimarioEmpaque = color;
 		}
 
 		/// <summary>
@@ -37,13 +37,13 @@ namespace Entidades_2018
 		/// <returns></returns>
 		public abstract string Mostrar();
 
-        public static explicit operator string(Producto p)
+        public static explicit operator string(Producto producto)
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendFormat("CODIGO DE BARRAS: {0}\r\n", p.codigoDeBarras);
-            sb.AppendFormat("MARCA          : {0}\r\n", p.marca.ToString());
-            sb.AppendFormat("COLOR EMPAQUE  : {0}\r\n", p.colorPrimarioEmpaque.ToString());
+            sb.AppendFormat("CODIGO DE BARRAS: {0}\r\n", producto.codigoDeBarras);
+            sb.AppendFormat("MARCA          : {0}\r\n", producto.marca.ToString());
+            sb.AppendFormat("COLOR EMPAQUE  : {0}\r\n", producto.colorPrimarioEmpaque.ToString());
             sb.AppendLine("---------------------");
 
             return sb.ToString();
@@ -52,22 +52,22 @@ namespace Entidades_2018
         /// <summary>
         /// Dos productos son iguales si comparten el mismo código de barras
         /// </summary>
-        /// <param name="v1"></param>
-        /// <param name="v2"></param>
+        /// <param name="productoUno"></param>
+        /// <param name="productoDos"></param>
         /// <returns></returns>
-        public static bool operator ==(Producto v1, Producto v2)
+        public static bool operator ==(Producto productoUno, Producto productoDos)
         {
-            return (v1.codigoDeBarras == v2.codigoDeBarras);
+            return (productoUno.codigoDeBarras == productoDos.codigoDeBarras);
         }
         /// <summary>
         /// Dos productos son distintos si su código de barras es distinto
         /// </summary>
-        /// <param name="v1"></param>
-        /// <param name="v2"></param>
+        /// <param name="productoUno"></param>
+        /// <param name="productoDos"></param>
         /// <returns></returns>
-        public static bool operator !=(Producto v1, Producto v2)
+        public static bool operator !=(Producto productoUno, Producto productoDos)
         {
-            return (v1.codigoDeBarras == v2.codigoDeBarras);
+            return !(productoUno.codigoDeBarras == productoDos.codigoDeBarras);
         }
     }
 }

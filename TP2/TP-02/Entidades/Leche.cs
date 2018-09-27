@@ -19,16 +19,29 @@ namespace Entidades_2018
         /// <param name="marca"></param>
         /// <param name="patente"></param>
         /// <param name="color"></param>
-        public Leche(EMarca marca, string patente, ConsoleColor color, ETipo tipo = ETipo.Entera)
+        public Leche(EMarca marca, string patente, ConsoleColor color)
             : base(patente, marca, color)
         {
-			this.tipo = tipo;
+			this.tipo = ETipo.Entera;
         }
 
-        /// <summary>
-        /// Las leches tienen 20 calorías
-        /// </summary>
-        protected override short CantidadCalorias
+		/// <summary>
+		/// Por defecto, TIPO será ENTERA
+		/// </summary>
+		/// <param name="marca"></param>
+		/// <param name="patente"></param>
+		/// <param name="color"></param>
+		/// <param name="tipo"></param>
+		public Leche(EMarca marca, string patente, ConsoleColor color, ETipo tipo)
+			: base(patente, marca, color)
+		{
+			this.tipo = tipo;
+		}
+
+		/// <summary>
+		/// Las leches tienen 20 calorías
+		/// </summary>
+		protected override short CantidadCalorias
         {
             get
             {
