@@ -10,15 +10,18 @@ namespace Entidades_2018
 {
     public class Leche : Producto
     {
-        public enum ETipo { Entera, Descremada }
+        public enum ETipo
+		{
+			Entera, Descremada
+		}
         ETipo tipo;
 
         /// <summary>
         /// Por defecto, TIPO será ENTERA
         /// </summary>
-        /// <param name="marca"></param>
-        /// <param name="patente"></param>
-        /// <param name="color"></param>
+        /// <param name="marca">Marca de la leche</param>
+        /// <param name="patente">Codigo de barras</param>
+        /// <param name="color">Color del empaque</param>
         public Leche(EMarca marca, string patente, ConsoleColor color)
             : base(patente, marca, color)
         {
@@ -26,12 +29,12 @@ namespace Entidades_2018
         }
 
 		/// <summary>
-		/// Por defecto, TIPO será ENTERA
+		/// Inicializa una nueva instancia de la clase Leche con los valores dados
 		/// </summary>
-		/// <param name="marca"></param>
-		/// <param name="patente"></param>
-		/// <param name="color"></param>
-		/// <param name="tipo"></param>
+		/// <param name="marca">Marca de la leche</param>
+		/// <param name="patente">Código de barras</param>
+		/// <param name="color">Color del empaque</param>
+		/// <param name="tipo">Tipo de leche</param>
 		public Leche(EMarca marca, string patente, ConsoleColor color, ETipo tipo)
 			: base(patente, marca, color)
 		{
@@ -49,6 +52,10 @@ namespace Entidades_2018
             }
         }
 
+		/// <summary>
+		/// Muestra los datos de la Leche
+		/// </summary>
+		/// <returns></returns>
         public override sealed string Mostrar()
         {
             StringBuilder sb = new StringBuilder();

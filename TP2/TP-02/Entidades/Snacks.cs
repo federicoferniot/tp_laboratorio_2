@@ -8,6 +8,13 @@ namespace Entidades_2018
 {
     public class Snacks: Producto
     {
+
+		/// <summary>
+		/// Inicializa una nueva instancia de la clase Snacks con los valores dados
+		/// </summary>
+		/// <param name="marca">Marca del snack</param>
+		/// <param name="patente">Codigo de barras</param>
+		/// <param name="color">Color del empaque</param>
         public Snacks(EMarca marca, string patente, ConsoleColor color)
             : base(patente, marca, color)
         {
@@ -23,6 +30,10 @@ namespace Entidades_2018
             }
         }
 
+		/// <summary>
+		/// Muestra los datos del Snack
+		/// </summary>
+		/// <returns></returns>
         public override sealed string Mostrar()
         {
             StringBuilder sb = new StringBuilder();

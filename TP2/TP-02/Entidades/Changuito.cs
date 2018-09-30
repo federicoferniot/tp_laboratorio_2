@@ -23,6 +23,11 @@ namespace Entidades_2018
         {
             this.productos = new List<Producto>();
         }
+
+		/// <summary>
+		/// Inicializa una nueva instancia de la clase Changuito
+		/// </summary>
+		/// <param name="espacioDisponible"></param>
         public Changuito(int espacioDisponible): this()
         {
             this.espacioDisponible = espacioDisponible;
