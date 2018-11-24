@@ -31,13 +31,13 @@ namespace MainCorreo
 				switch (paquete.Estado)
 				{
 					case Paquete.EEstado.Ingresado:
-						lstEstadoIngresado.Items.Add(paquete.ToString());
+						lstEstadoIngresado.Items.Add(paquete);
 						break;
 					case Paquete.EEstado.EnViaje:
-						lstEstadoEnViaje.Items.Add(paquete.ToString());
+						lstEstadoEnViaje.Items.Add(paquete);
 						break;
 					case Paquete.EEstado.Entregado:
-						lstEstadoEntregado.Items.Add(paquete.ToString());
+						lstEstadoEntregado.Items.Add(paquete);
 						break;
 				}
 			}
@@ -48,6 +48,7 @@ namespace MainCorreo
 			if (!(elemento is null))
 			{
 				this.rtbMostrar.Text = elemento.MostrarDatos(elemento);
+				elemento.MostrarDatos(elemento).Guardar("salida.txt");
 			}
 		}
 
@@ -64,10 +65,16 @@ namespace MainCorreo
 			} 
 		}
 
+		private void paq_InformaError(string mensaje)
+		{
+			MessageBox.Show(mensaje);
+		}
+
 		private void btnAgregar_Click(object sender, EventArgs e)
 		{
 			Paquete paquete = new Paquete(this.txtDireccion.Text, this.mtxtTrackingID.Text);
 			paquete.InformaEstado += this.paq_InformaEstado;
+			paquete.InformaError += this.paq_InformaError;
 			try
 			{
 				this.correo += paquete;
@@ -87,6 +94,11 @@ namespace MainCorreo
 		private void btnMostrarTodos_Click(object sender, EventArgs e)
 		{
 			this.MostrarInformacion<List<Paquete>>((IMostrar<List<Paquete>>)correo);
+		}
+
+		private void mostrarToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.MostrarInformacion<Paquete>((IMostrar<Paquete>)lstEstadoEntregado.SelectedItem);
 		}
 	}
 }

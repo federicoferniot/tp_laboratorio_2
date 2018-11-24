@@ -10,7 +10,9 @@ namespace Entidades
 	public class Paquete: IMostrar<Paquete>
 	{
 		public delegate void DelegadoEstado(object sender, EventArgs e);
+		public delegate void DelegadoBDD(string mensaje);
 		public event DelegadoEstado InformaEstado;
+		public event DelegadoBDD InformaError;
 		public enum EEstado
 		{
 			Ingresado,
@@ -70,7 +72,7 @@ namespace Entidades
 		{
 			Paquete paquete = (Paquete)elemento;
 
-			return string.Format("{0} para {1}", paquete.trackingID, paquete.direccionEntrega);
+			return string.Format("{0} para {1}\r\n", paquete.trackingID, paquete.direccionEntrega);
 		}
 
 		public override string ToString()
@@ -86,7 +88,14 @@ namespace Entidades
 				this.estado++;
 				this.InformaEstado.Invoke(null, null);
 			}
-			PaqueteDAO.Insertar(this);
+			try
+			{
+				PaqueteDAO.Insertar(this);
+			}
+			catch (Exception e)
+			{
+				this.InformaError(e.Message);
+			}
 		}
 
 

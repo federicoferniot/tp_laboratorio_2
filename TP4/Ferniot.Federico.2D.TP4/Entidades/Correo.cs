@@ -45,7 +45,7 @@ namespace Entidades
 			List<Paquete> paquetes = (List<Paquete>)((Correo)elementos).paquetes;
 			foreach (Paquete paquete in paquetes)
 			{
-				retorno += string.Format("{0} para {1} ({2})\n", paquete.TrackingID, paquete.DireccionEntrega, paquete.Estado.ToString());
+				retorno += string.Format("{0} para {1} ({2})\r\n", paquete.TrackingID, paquete.DireccionEntrega, paquete.Estado.ToString());
 			}
 			return retorno;
 		}

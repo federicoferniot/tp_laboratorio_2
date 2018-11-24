@@ -24,7 +24,7 @@ namespace Entidades
 			{
 				PaqueteDAO.conexion.Open();
 				PaqueteDAO.comando.CommandText = String.Format("INSERT INTO Paquetes (direccionEntrega, trackingID, alumno) VALUES('{0}', '{1}', '{2}')",
-					paquete.DireccionEntrega, paquete.TrackingID, "Federico Ferniot");
+																paquete.DireccionEntrega, paquete.TrackingID, "Federico Ferniot");
 				PaqueteDAO.comando.Connection = PaqueteDAO.conexion;
 				PaqueteDAO.comando.ExecuteNonQuery();
 			}
