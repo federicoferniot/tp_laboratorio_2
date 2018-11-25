@@ -12,6 +12,10 @@ namespace Entidades
 		private List<Thread> mockPaquete;
 		private List<Paquete> paquetes;
 
+		#region Propiedades
+		/// <summary>
+		/// Devuelve o setea la lista de paquetes del correo
+		/// </summary>
 		public List<Paquete> Paquetes
 		{
 			get
@@ -23,13 +27,23 @@ namespace Entidades
 				this.paquetes = value;
 			}
 		}
+		#endregion
 
+		#region Constructores
+		/// <summary>
+		/// Instancia un nuevo correo
+		/// </summary>
 		public Correo()
 		{
 			this.mockPaquete = new List<Thread>();
 			this.paquetes = new List<Paquete>();
 		}
+		#endregion
 
+		#region Métodos
+		/// <summary>
+		/// Finaliza todos los hilos activos del correo
+		/// </summary>
 		public void FinEntregas()
 		{
 			foreach (Thread thread in mockPaquete)
@@ -38,7 +52,11 @@ namespace Entidades
 					thread.Abort();
 			}
 		}
-
+		/// <summary>
+		/// Devuelve los datos de todos los paquetes del correo
+		/// </summary>
+		/// <param name="elementos"></param>
+		/// <returns></returns>
 		public string MostrarDatos(IMostrar<List<Paquete>> elementos)
 		{
 			string retorno = "";
@@ -49,7 +67,16 @@ namespace Entidades
 			}
 			return retorno;
 		}
+		#endregion
 
+		#region Operadores
+		/// <summary>
+		/// Agrega un paquete al correo
+		/// </summary>
+		/// <param name="correo"></param>
+		/// <param name="paquete"></param>
+		/// <returns></returns>
+		/// <exception cref="TrackingIdRepetidoException">Si el TrackingID ya se encuentra agregado</exception>
 		public static Correo operator +(Correo correo, Paquete paquete)
 		{
 			Thread thread;
@@ -64,5 +91,6 @@ namespace Entidades
 			thread.Start();
 			return correo;
 		}
+		#endregion
 	}
 }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace TestUnitarios
 {
 	[TestClass]
-	public class UnitTest1
+	public class UnitTestCorreo
 	{
 		[TestMethod]
 		public void CrearNuevoCorreo_SeInstanciaListaDePaquetes()

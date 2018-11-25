@@ -20,7 +20,9 @@ namespace MainCorreo
 			InitializeComponent();
 			this.correo = new Correo();
 		}
-
+		/// <summary>
+		/// Actualiza las listas mostrando los paquetes según su estado
+		/// </summary>
 		private void ActualizarEstados()
 		{
 			lstEstadoIngresado.Items.Clear();
@@ -42,7 +44,11 @@ namespace MainCorreo
 				}
 			}
 		}
-
+		/// <summary>
+		/// Muestra la información del elemento dado
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="elemento"></param>
 		private void MostrarInformacion<T>(IMostrar<T> elemento)
 		{
 			if (!(elemento is null))
@@ -51,7 +57,11 @@ namespace MainCorreo
 				elemento.MostrarDatos(elemento).Guardar("salida.txt");
 			}
 		}
-
+		/// <summary>
+		/// Llama a actualizar estados para mostrar los paquetes
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void paq_InformaEstado(object sender, EventArgs e)
 		{
 			if (this.InvokeRequired)
@@ -64,12 +74,19 @@ namespace MainCorreo
 				this.ActualizarEstados();
 			} 
 		}
-
+		/// <summary>
+		/// Muestra mensaje de error
+		/// </summary>
+		/// <param name="mensaje"></param>
 		private void paq_InformaError(string mensaje)
 		{
 			MessageBox.Show(mensaje);
 		}
-
+		/// <summary>
+		/// Agrega un nuevo paquete al correo
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void btnAgregar_Click(object sender, EventArgs e)
 		{
 			Paquete paquete = new Paquete(this.txtDireccion.Text, this.mtxtTrackingID.Text);
@@ -90,12 +107,20 @@ namespace MainCorreo
 		{
 			this.correo.FinEntregas();
 		}
-
+		/// <summary>
+		/// Muestra la información de todos los paquetes
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void btnMostrarTodos_Click(object sender, EventArgs e)
 		{
 			this.MostrarInformacion<List<Paquete>>((IMostrar<List<Paquete>>)correo);
 		}
-
+		/// <summary>
+		/// Muestra la información del paquete seleccionado
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void mostrarToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			this.MostrarInformacion<Paquete>((IMostrar<Paquete>)lstEstadoEntregado.SelectedItem);

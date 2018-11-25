@@ -12,12 +12,19 @@ namespace Entidades
 		private static SqlCommand comando;
 		private static SqlConnection conexion;
 
+		/// <summary>
+		/// Se instancia la conexion y comando
+		/// </summary>
 		static PaqueteDAO()
 		{
 			PaqueteDAO.conexion = new SqlConnection("Data Source=DESKTOP-PEVO1MQ\\SQLEXPRESS01;Initial Catalog=correo-sp-2017;Integrated Security=True");
 			PaqueteDAO.comando = new SqlCommand();
 		}
-
+		/// <summary>
+		/// Se intenta guardar en la base de datos el paquete dado
+		/// </summary>
+		/// <param name="paquete"></param>
+		/// <returns>Devuelve el resultado de la operación</returns>
 		public static bool Insertar(Paquete paquete)
 		{
 			try
